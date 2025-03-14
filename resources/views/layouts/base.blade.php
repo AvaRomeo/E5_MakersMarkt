@@ -12,7 +12,7 @@
     <header class="bg-white shadow">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="font-bold text-xl">
-                MakersMarkt
+                MarkMaker
             </div>
             <ul class="flex space-x-4">
                 <li><a href="/" class="hover:text-indigo-600">Home</a></li>
@@ -31,7 +31,7 @@
     </main>
 
     <footer class="bg-gray-800 text-white py-4 text-center">
-        <p>&copy; {{ date('Y') }} MakersMarkt. All rights reserved.</p>
+        <p>&copy; {{ date('Y') }} MarkMaker. All rights reserved.</p>
     </footer>
 
 </body>
