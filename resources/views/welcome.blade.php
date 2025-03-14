@@ -5,7 +5,7 @@
         <div class="max-w-md w-full space-y-8">
             <div class="text-center">
                 <h1 class="text-4xl font-extrabold text-gray-900">
-                    Welcome to MakersMarkt
+                    Welcome to MarkMaker
                 </h1>
             </div>
 
