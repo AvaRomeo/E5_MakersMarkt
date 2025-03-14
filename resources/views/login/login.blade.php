@@ -22,6 +22,6 @@
             <label for="password">Password:</label>
             <input type="password" name="password" required>
 
-            <button type="submit">Login</button>
+            <button type="submit">Loogin</button>
         </form>
     @endsection
