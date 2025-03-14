@@ -17,8 +17,11 @@
             <ul class="flex space-x-4">
                 <li><a href="/" class="hover:text-indigo-600">Home</a></li>
                 <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
-                <li><a href="/login" class="hover:text-indigo-600">Loogin</a></li>
-                {{-- <li><a href="/logout">Logout</a></li> --}}
+                @if(Auth::check())
+                    <li><a href="/logout" class="hover:text-indigo-600">Loogoot</a></li>
+                @else
+                    <li><a href="/login" class="hover:text-indigo-600">Loogin</a></li>
+                @endif
             </ul>
         </nav>
     </header>
