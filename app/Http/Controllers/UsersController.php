@@ -5,9 +5,55 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
+    public function index()
+    {
+        return view('profile.index', ['user' => Auth::user()]);
+    }
+
+    public function edit()
+    {
+        return view('profile.edit', ['user' => Auth::user()]);
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+
+        // Validatie
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|min:6|confirmed',
+        ]);
+
+        // Gegevens bijwerken
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('profile.index')->with('success', 'Profiel succesvol bijgewerkt!');
+    }
+
+    public function destroy()
+    {
+        $user = Auth::user();
+
+        $user->delete();
+
+        Auth::logout();
+
+        return redirect('/')->with('success', 'Je account is succesvol verwijderd.');
+    }
+
     public function create(){
         return view('login/register');
     }

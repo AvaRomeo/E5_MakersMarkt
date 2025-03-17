@@ -1,6 +1,12 @@
 @extends('layouts.base')
 
 @section('content')
+    @if(session('success'))
+        <div class="bg-green-500 text-white p-3 rounded-lg mb-4 text-center">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
             <div class="text-center">
