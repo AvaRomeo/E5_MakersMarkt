@@ -18,7 +18,10 @@
                 <li><a href="/" class="hover:text-indigo-600">Home</a></li>
                 <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
                 @if(Auth::check())
-                    <li><a href="/logout" class="hover:text-indigo-600">Loogoot</a></li>
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="hover:text-indigo-600">Loogout</button>
+                    </form>                
                 @else
                     <li><a href="/login" class="hover:text-indigo-600">Loogin</a></li>
                 @endif
