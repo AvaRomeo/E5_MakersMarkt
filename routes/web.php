@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UsersController::class, 'index'])->name('profile.index');
     Route::get('/profile/edit', [UsersController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [UsersController::class, 'update'])->name('profile.update');
-    Route::delete('/profile/delete', [UsersController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile/destroy', [UsersController::class, 'destroy'])->name('profile.destroy');
 });
 
 // Route::post('/logout', [UsersController::class, 'logout'])->name('logout');

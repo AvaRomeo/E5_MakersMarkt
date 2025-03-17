@@ -14,18 +14,20 @@
             <p class="text-lg text-gray-600"><strong>Email:</strong> <span class="text-gray-800">{{ Auth::user()->email }}</span></p>
         </div>
         <div class="mt-6 text-center">
+            <!-- Bewerkknop -->
             <a href="{{ route('profile.edit') }}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow">
                 Profiel bewerken
             </a>
-            <form method="POST" action="{{ route('profile.destroy') }}" onsubmit="return confirm('Weet je zeker dat je je account wilt verwijderen? Dit kan niet ongedaan worden gemaakt.');">
+
+            <!-- Verwijderknop -->
+            <form method="POST" action="{{ route('profile.destroy') }}" class="inline-block" onsubmit="return confirm('Weet je zeker dat je je account wilt verwijderen? Dit kan niet ongedaan worden gemaakt.');">
                 @csrf
                 @method('DELETE')
             
-                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow">
+                <button type="submit" class="inline-block bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow ml-4">
                     Verwijder account
                 </button>
             </form>
-            
         </div>
     </div>
 @endsection

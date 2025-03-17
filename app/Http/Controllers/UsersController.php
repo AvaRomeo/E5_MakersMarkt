@@ -46,12 +46,13 @@ class UsersController extends Controller
     public function destroy()
     {
         $user = Auth::user();
+        if ($user) {
+            $user->delete();
 
-        $user->delete();
+            return redirect('/')->with('success', 'Je account is succesvol verwijderd.');
+        }
 
-        Auth::logout();
-
-        return redirect('/')->with('success', 'Je account is succesvol verwijderd.');
+        return redirect()->route('profile.index')->with('error', 'Er is iets mis gegaan bij het verwijderen van je account.');
     }
 
     public function create(){
