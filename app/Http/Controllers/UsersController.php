@@ -101,8 +101,8 @@ class UsersController extends Controller
         return back()->withErrors(['email' => 'invalid credentials'])->onlyInput('email');
     }
 
-    // public function logout(){
-    //     Auth::logout();
-    //     return redirect()->route('home');
-    // }
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('home');
+    }
 }

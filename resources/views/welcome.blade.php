@@ -16,7 +16,7 @@
             </div>
 
             @auth
-                @if (auth()->user()->id == 1)
+                @if (auth()->user()->is_moderator == 1)
                     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                         <strong class="font-bold">Looged In!</strong>
                         <span class="block sm:inline">You are looged in as admin.</span>
