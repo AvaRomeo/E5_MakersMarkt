@@ -28,8 +28,8 @@
                 @csrf
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
-                        <label for="email" class="sr-only">Email address</label>
-                        <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                        <label for="email_or_name" class="sr-only">Email or Name</label>
+                        <input id="email_or_name" name="email_or_name" type="text" autocomplete="email_or_name" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email or Name">
                     </div>
                     <div>
                         <label for="password" class="sr-only">Passwoord</label>

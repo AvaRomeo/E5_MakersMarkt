@@ -82,23 +82,24 @@ class UsersController extends Controller
     }
 
     public function login(Request $request){
-        // Validate the user
-        $data = request()->validate([
-            'email' => 'required|email',
+        // Validate the input: either email or name is required, and password is required.
+        $data = $request->validate([
+            'email_or_name' => 'required', // We will check for both name and email
             'password' => 'required',
         ]);
-
-        // Check if the user exists
-        $user = User::where('email', $data['email'])->first();
-
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
+    
+        // Check if the input is an email or name
+        $user = User::where(function($query) use ($data) {
+            $query->where('email', $data['email_or_name'])
+                  ->orWhere('name', $data['email_or_name']);
+        })->first();
+    
+        if ($user && Auth::attempt(['email' => $user->email, 'password' => $data['password']])) {
             // Authentication passed...
             return redirect()->intended('/');
         }
-
-        return back()->withErrors(['email' => 'invalid credentials'])->onlyInput('email');
+    
+        return back()->withErrors(['email_or_name' => 'Invalid credentials'])->onlyInput('email_or_name');
     }
 
     public function logout(){
