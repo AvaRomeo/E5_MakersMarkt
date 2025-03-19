@@ -7,7 +7,10 @@
             </div>
             <div class="p-4">
                 <h2 class="text-3xl font-bold text-gray-900">{{ $product->name }}</h2>
-                <p class="text-lg text-gray-700 mt-1">Gemaakt door: <span class="font-medium text-gray-900">{{ $product->maker->name }}</span></p>
+                <p class="text-lg text-gray-700 mt-1">Gemaakt door: 
+                    <span class="font-medium text-gray-900">{{ $product->maker->name }}</span>
+                    <a href="{{ route('makers.portfolio', $product->maker->id) }}" class="text-blue-500 hover:underline ml-2">Bekijk portfolio</a>
+                </p>
                 <p class="mt-4 text-gray-600 leading-relaxed">{{ $product->description }}</p>
                 <div class="mt-4">
                     <h3 class="text-xl font-semibold text-gray-900">Specificaties</h3>

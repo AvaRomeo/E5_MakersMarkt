@@ -28,6 +28,12 @@ Route::post(uri: '/login', action: [UsersController::class, 'login']);
 Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
 
+Route::get('/makers/{id}/portfolio', function ($id) {
+    $user = \App\Models\User::find($id);
+    $products = Product::where('user_id', $id)->get();
+    return view('makers.portfolio', ['id' => $id, 'user' => $user, 'products' => $products]);
+})->name('makers.portfolio');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UsersController::class, 'index'])->name('profile.index');
     Route::get('/profile/edit', [UsersController::class, 'edit'])->name('profile.edit');
