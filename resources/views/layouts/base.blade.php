@@ -16,6 +16,7 @@
             </div>
             <ul class="flex space-x-4">
                 <li><a href="/" class="hover:text-indigo-600">Home</a></li>
+                <li><a href="/products" class="hover:text-indigo-600">Products</a></li>
                 <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
                 @if(Auth::check())
                     <li><a href="/logout" class="hover:text-indigo-600">Loogoot</a></li>

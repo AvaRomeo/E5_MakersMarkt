@@ -33,7 +33,7 @@ class ProductFactory extends Factory
             'durability' => $this->faker->randomNumber(1),
             'unique_features' => $this->faker->sentence,
             'price' => $this->faker->randomFloat(2, 1, 1000),
-            'image_path' => $this->faker->imageUrl(),
+            'image_path' => 'https://picsum.photos/200',
         ];
     }
 }
