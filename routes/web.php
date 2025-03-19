@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Models\Product;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +25,8 @@ Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
 Route::post('/register', [UsersController::class, 'store']);
 Route::post(uri: '/login', action: [UsersController::class, 'login']);
 
+Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
+Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UsersController::class, 'index'])->name('profile.index');
@@ -30,5 +34,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update', [UsersController::class, 'update'])->name('profile.update');
     Route::delete('/profile/destroy', [UsersController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 // Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
