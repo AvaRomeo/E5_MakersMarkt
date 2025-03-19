@@ -19,6 +19,7 @@ Route::get('/register', function () {
 
 
 Route::get('/login', [UsersController::class, 'showLoginForm'])->name('login');
+Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
 
 
 Route::post('/register', [UsersController::class, 'store']);
@@ -26,6 +27,13 @@ Route::post(uri: '/login', action: [UsersController::class, 'login']);
 
 Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [UsersController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [UsersController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [UsersController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/destroy', [UsersController::class, 'destroy'])->name('profile.destroy');
+});
 
 
 // Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
