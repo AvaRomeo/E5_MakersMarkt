@@ -26,8 +26,6 @@ Route::get('/dashboard', function () {
 
     $products = Product::paginate(10);
 
-    $products = DB::table('products')->get();
-
 
     return view('dashboard_mod')->with('products', $products);
 });
