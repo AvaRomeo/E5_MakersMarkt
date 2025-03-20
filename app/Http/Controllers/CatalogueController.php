@@ -9,7 +9,7 @@ class CatalogueController extends Controller
 {
     public function index()
     {
-            $products = Product::select('id', 'image_path', 'name', 'description')->get();
+            $products = Product::select('id', 'image_path', 'name', 'description', 'price')->get();
 
             return view('catalogue.index', compact('products'));
     }
