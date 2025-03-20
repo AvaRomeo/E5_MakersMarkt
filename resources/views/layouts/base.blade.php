@@ -47,7 +47,7 @@
     </main>
 
     <footer class="bg-black text-center text-blue-200 py-2 w-full fixed bottom-0">
-        &copy; 2021 MarkMaker
+        &copy; 1957 MarkMaker
     </footer>
 
 </body>
