@@ -29,16 +29,17 @@
                     @for ($i = 1; $i <= 10; $i++) 
                         @if ($i <= $product->durability)
                             <span class="
-                                @if ($product->durability == 10) text-red-700
-                                @elseif ($product->durability == 9) text-red-500
-                                @elseif ($product->durability == 8) text-orange-500
-                                @elseif ($product->durability == 7) text-yellow-500
-                                @elseif ($product->durability == 6) text-yellow-300
-                                @elseif ($product->durability == 5) text-green-500
-                                @elseif ($product->durability == 4) text-green-400
-                                @elseif ($product->durability == 3) text-green-300
-                                @elseif ($product->durability == 2) text-green-200
-                                @else text-green-100
+                                @if ($product->durability == 10) text-green-700
+                                @elseif ($product->durability == 9) text-green-500
+                                @elseif ($product->durability == 8) text-green-400
+                                @elseif ($product->durability == 7) text-green-300
+                                @elseif ($product->durability == 6) text-green-200
+                                @elseif ($product->durability == 5) text-yellow-500
+                                @elseif ($product->durability == 4) text-yellow-400
+                                @elseif ($product->durability == 3) text-yellow-300
+                                @elseif ($product->durability == 2) text-orange-500
+                                @elseif ($product->durability == 1) text-red-500
+                                @else text-red-700
                                 @endif
                             ">&#9733;</span>
                         @else
