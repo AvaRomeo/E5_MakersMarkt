@@ -27,10 +27,10 @@
                 <label for="type" class="block text-sm font-medium text-gray-700">Type product</label>
                 <select name="type" id="type" required
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="Sieraden">Sieraden</option>
-                    <option value="Keramiek">Keramiek</option>
-                    <option value="Textiel">Textiel</option>
-                    <option value="Kunst">Kunst</option>
+                    <option value="Jewelry">Sieraden</option>
+                    <option value="Ceramics">Keramiek</option>
+                    <option value="Textiles">Textiel</option>
+                    <option value="Art">Kunst</option>
                 </select>
             </div>
 

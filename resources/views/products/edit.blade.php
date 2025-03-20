@@ -30,10 +30,10 @@
                 <div class="mb-4">
                     <label for="type" class="block text-gray-700">Type</label>
                     <select name="type" id="type" class="w-full p-2 border border-gray-300 rounded-lg" required>
-                        <option value="Sieraden" @if($product->type == 'Sieraden') selected @endif>Sieraden</option>
-                        <option value="Keramiek" @if($product->type == 'Keramiek') selected @endif>Keramiek</option>
-                        <option value="Textiel" @if($product->type == 'Textiel') selected @endif>Textiel</option>
-                        <option value="Kunst" @if($product->type == 'Kunst') selected @endif>Kunst</option>
+                        <option value="Jewelry" @if($product->type == 'Jewelry') selected @endif>Jewelry</option>
+                        <option value="Ceramics" @if($product->type == 'Ceramics') selected @endif>Ceramics</option>
+                        <option value="Textiles" @if($product->type == 'Textiles') selected @endif>Textiles</option>
+                        <option value="Art" @if($product->type == 'Art') selected @endif>Art</option>
                     </select>
                     @error('type') <div class="text-red-500 text-sm mt-1">{{ $message }}</div> @enderror
                 </div>
