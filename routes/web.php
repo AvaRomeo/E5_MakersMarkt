@@ -22,7 +22,7 @@ Route::get('/register', function () {
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->middleware(['auth', 'verified'])->name('catalogue.index');
 Route::get('/catalogue/{id}/detail', [CatalogueController::class, 'show'])->middleware(['auth', 'verified'])->name('catalogue.detail');
-=
+
 Route::get('/dashboard', function () {
     $products = DB::table('products')->get();
 
