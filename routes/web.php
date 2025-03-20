@@ -18,7 +18,9 @@ Route::get('/register', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard_mod');
+    $products = DB::table('products')->get();
+
+    return view('dashboard_mod')->with('products', $products);
 });
 
 

@@ -8,6 +8,16 @@
                     </h1>
                     <img src="Mark-Rutte.png" alt="yay">
                     <p>you are moderator!!!</p>
+
+                    <ul class="mt-4">
+                        @foreach($products as $product)
+                            <li class="border-b py-2">
+                                <h2 class="text-xl font-semibold">{{ $product->name }}</h2>
+                                <p class="text-gray-700">{{ $product->description }}</p>
+                                <span class="text-gray-900 font-bold">${{ $product->price }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
