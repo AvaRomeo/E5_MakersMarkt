@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CatalogueController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +15,9 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('login/register');
 });
+
+Route::get('/catalogue', [CatalogueController::class, 'index'])->middleware(['auth', 'verified'])->name('catalogue.index');
+Route::get('/catalogue/{id}/detail', [CatalogueController::class, 'show'])->middleware(['auth', 'verified'])->name('catalogue.detail');
 
 
 Route::get('/login', [UsersController::class, 'showLoginForm'])->name('login');
