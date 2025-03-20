@@ -24,6 +24,9 @@
             @if(Auth::check())
                 <li><a href="/profile" class="hover:text-indigo-600">Profile</a></li>
                 <li><a href="{{ route('cart.index') }}" class="hover:text-indigo-600">Cart</a></li>
+                @if(Auth::check() && Auth::user()->is_moderator)
+                <li><a href="/dashboard" class="hover:text-indigo-600">Dashboard Moderator</a></li>
+            @endif
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                 @csrf
                 <button type="submit" class="hover:text-indigo-600">Logout</button>
@@ -32,9 +35,7 @@
                 <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
                 <li><a href="/login" class="hover:text-indigo-600">Login</a></li>
             @endif
-            @if(Auth::check() && Auth::user()->is_moderator)
-                <li><a href="/dashboard" class="hover:text-indigo-600">Dashboard Moderator</a></li>
-            @endif
+
             </ul>
         </nav>
     </header>
