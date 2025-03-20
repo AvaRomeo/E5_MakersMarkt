@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CartController;
 use App\Models\Product;
 
 Route::get('/', function () {
@@ -33,6 +34,12 @@ Route::post(uri: '/login', action: [UsersController::class, 'login']);
 
 Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
 
 Route::get('/makers/{id}/portfolio', function ($id) {
     $user = \App\Models\User::find($id);
