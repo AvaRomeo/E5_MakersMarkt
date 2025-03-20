@@ -7,7 +7,7 @@
     </div>
     @endif
 
-    <div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-6 flex justify-between items-center">
                 <h2 class="text-3xl font-extrabold text-gray-900">Products</h2>

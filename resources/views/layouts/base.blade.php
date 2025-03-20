@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>MakersMarkt</title>
 </head>
-<body class="bg-gray-100">
+<body class="bg-violet-100 min-h-screen">
 
     <header class="bg-yellow-100 shadow">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -46,10 +46,8 @@
         @yield('content')
     </main>
 
-    <footer>
-        <div class="bg-yellow-100 text-center py-4">
-            &copy; 2021 MarkMaker
-        </div>
+    <footer class="bg-black text-center text-blue-200 py-2 w-full fixed bottom-0">
+        &copy; 2021 MarkMaker
     </footer>
 
 </body>

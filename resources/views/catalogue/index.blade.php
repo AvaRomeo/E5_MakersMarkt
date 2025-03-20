@@ -56,8 +56,8 @@
                     <div class="bg-white shadow p-4 rounded">
                         <img src="{{ $product->image_path }}" alt="{{ $product->name }}" class="w-full h-32 object-cover">
                         <div class="font-bold text-lg">{{ $product->name }}</div>
-                        <div class="text-gray-700">{{ $product->description }}</div>
-                        {{-- <a href="{{ route('cart.add', $product->id)}}">Add to Cart</a> --}}
+                        <div class="text-gray-700 pb-2">{{ $product->description }}</div>
+                        <a href="{{ route('cart.add', $product->id)}}" class="bg-green-500 text-white px-4 py-2 rounded">Add to Cart</a>
                     </div>
                 </a>
             @endforeach
