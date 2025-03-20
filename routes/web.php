@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CartController;
 use App\Models\Product;
 use App\Http\Controllers\CatalogueController;
 
@@ -21,6 +22,15 @@ Route::get('/register', function () {
 Route::get('/catalogue', [CatalogueController::class, 'index'])->middleware(['auth', 'verified'])->name('catalogue.index');
 Route::get('/catalogue/{id}/show', [CatalogueController::class, 'show'])->middleware(['auth', 'verified'])->name('catalogue.show');
 
+Route::get('/dashboard', function () {
+
+    $products = Product::paginate(10);
+
+
+    return view('dashboard_mod')->with('products', $products);
+});
+
+
 
 Route::get('/login', [UsersController::class, 'showLoginForm'])->name('login');
 Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
@@ -29,8 +39,21 @@ Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
 Route::post('/register', [UsersController::class, 'store']);
 Route::post(uri: '/login', action: [UsersController::class, 'login']);
 
-Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
-Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
+Route::middleware('auth')->group(function () {
+    Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductsController::class, 'store'])->name('products.store');
+    Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
+    Route::get('/products/{product}/edit', [ProductsController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{product}', [ProductsController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->name('products.destroy');
+});
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
 
 Route::get('/makers/{id}/portfolio', function ($id) {
     $user = \App\Models\User::find($id);
@@ -44,6 +67,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update', [UsersController::class, 'update'])->name('profile.update');
     Route::delete('/profile/destroy', [UsersController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->name('products.destroy');
 
 
 // Route::post('/logout', [UsersController::class, 'logout'])->name('logout');

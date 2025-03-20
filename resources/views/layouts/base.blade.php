@@ -9,15 +9,29 @@
 </head>
 <body class="bg-gray-100">
 
-    <header class="bg-white shadow">
+    <header class="bg-yellow-100 shadow">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="font-bold text-xl">
-                MarkMaker
+            <a href="/">MARKMAKER</a>
             </div>
             <ul class="flex space-x-4">
                 <li><a href="/" class="hover:text-indigo-600">Home</a></li>
                 <li><a href="/products" class="hover:text-indigo-600">Products</a></li>
+
+            @if(Auth::check())
                 <li><a href="/catalogue" class="hover:text-indigo-600">Catalogue</a></li>
+            @endif
+            @if(Auth::check())
+                <li><a href="/profile" class="hover:text-indigo-600">Profile</a></li>
+                <li><a href="{{ route('cart.index') }}" class="hover:text-indigo-600">Cart</a></li>
+                @if(Auth::check() && Auth::user()->is_moderator)
+                <li><a href="/dashboard" class="hover:text-indigo-600">Dashboard</a></li>
+            @endif
+                <form action="{{ route('logout') }}" method="POST" class="inline">
+                @csrf
+                <button type="submit" class="hover:text-indigo-600">Loogoot</button>
+                </form>
+            @else
                 <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
                 @if(Auth::check())
                     <li><a href="/profile" class="hover:text-indigo-600">Profile</a></li>

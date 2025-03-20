@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,8 @@ class UsersController extends Controller
 {
     public function index()
     {
-        return view('profile.index', ['user' => Auth::user()]);
+        $products = Product::where('user_id', Auth::id())->get();
+        return view('profile.index', ['user' => Auth::user()], compact('products'));
     }
 
     public function edit()
