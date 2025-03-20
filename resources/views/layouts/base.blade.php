@@ -18,21 +18,16 @@
                 <li><a href="/" class="hover:text-indigo-600">Home</a></li>
                 <li><a href="/products" class="hover:text-indigo-600">Products</a></li>
 
-            @if(Auth::check())
-                <li><a href="/catalogue" class="hover:text-indigo-600">Catalogue</a></li>
-            @endif
-            @if(Auth::check())
-                <li><a href="/profile" class="hover:text-indigo-600">Profile</a></li>
-                <li><a href="{{ route('cart.index') }}" class="hover:text-indigo-600">Cart</a></li>
-                @if(Auth::check() && Auth::user()->is_moderator)
-                <li><a href="/dashboard" class="hover:text-indigo-600">Dashboard</a></li>
-            @endif
-                <form action="{{ route('logout') }}" method="POST" class="inline">
-                @csrf
-                <button type="submit" class="hover:text-indigo-600">Loogoot</button>
-                </form>
-            @else
-                <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
+                @if(Auth::check())
+                    <li><a href="/catalogue" class="hover:text-indigo-600">Catalogue</a></li>
+                @endif
+                @if(Auth::check())
+                    <li><a href="/profile" class="hover:text-indigo-600">Profile</a></li>
+                    <li><a href="{{ route('cart.index') }}" class="hover:text-indigo-600">Cart</a></li>
+                    @if(Auth::check() && Auth::user()->is_moderator)
+                        <li><a href="/dashboard" class="hover:text-indigo-600">Dashboard</a></li>
+                    @endif
+                @endif
                 @if(Auth::check())
                     <li><a href="/profile" class="hover:text-indigo-600">Profile</a></li>
                     <form action="{{ route('logout') }}" method="POST" class="inline">
@@ -47,12 +42,14 @@
         </nav>
     </header>
 
-    <main class="container mx-auto px-4 py-8">
+    <main>
         @yield('content')
     </main>
 
-    <footer class="bg-gray-800 text-white py-4 text-center">
-        <p>&copy; {{ date('Y') }} MarkMaker. All rights reserved.</p>
+    <footer>
+        <div class="bg-yellow-100 text-center py-4">
+            &copy; 2021 MarkMaker
+        </div>
     </footer>
 
 </body>
