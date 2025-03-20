@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('name');
             $table->text('description');
-            $table->enum('type', ['Sieraden', 'Keramiek', 'Textiel', 'Kunst']); // Bijvoorbeeld: Sieraden, Keramiek, Textiel, Kunst
+            $table->enum('type', ['Jewelry', 'Ceramics', 'Textiles', 'Art']); // For example: Jewelry, Ceramics, Textiles, Art
             $table->text('material_usage'); // Details over de gebruikte grondstoffen
             $table->integer('production_time'); // Geschatte tijd nodig voor vervaardiging (in uren)
             $table->string('complexity'); // Mate van vakmanschap en technische uitdaging

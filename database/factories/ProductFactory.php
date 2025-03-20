@@ -26,7 +26,7 @@ class ProductFactory extends Factory
             'user_id' => \App\Models\User::factory(),
             'name' => $this->faker->word,
             'description' => $this->faker->sentence,
-            'type' => $this->faker->randomElement(['Sieraden', 'Keramiek', 'Textiel', 'Kunst']),
+            'type' => $this->faker->randomElement(['Jewelry', 'Ceramics', 'Textiles', 'Art']),
             'material_usage' => $this->faker->word,
             'production_time' => $this->faker->randomNumber(2),
             'complexity' => $this->faker->randomNumber(1),

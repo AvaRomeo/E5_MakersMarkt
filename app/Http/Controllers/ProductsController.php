@@ -118,6 +118,9 @@ class ProductsController extends Controller
         return redirect()->route('products.index')->with('success', 'Product succesvol verwijderd!');
     }
 
+    
+
+
     public function addToCart(Request $request)
     {
         $productId = $request->input('product_id');

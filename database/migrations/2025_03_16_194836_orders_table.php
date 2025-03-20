@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('buyer_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('maker_id')->constrained('users')->cascadeOnDelete();
             $table->enum('status', ['in productie', 'verzonden', 'geweigerd, terugbetaling verzonden']);
             $table->text('status_description')->nullable();
             $table->timestamp('order_date');
