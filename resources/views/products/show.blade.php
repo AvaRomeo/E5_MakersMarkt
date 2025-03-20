@@ -56,7 +56,8 @@
                                     @if ($product->complexity == 5) text-red-500
                                     @elseif ($product->complexity == 4) text-orange-500
                                     @elseif ($product->complexity == 3) text-yellow-500
-                                    @elseif ($product->complexity == 2) text-green-500                                
+                                    @elseif ($product->complexity == 2) text-green-500  
+                                    @elseif ($product->complexity == 1) text-green-400                              
                                     @endif
                                 ">&#9733;</span>
                     @else
