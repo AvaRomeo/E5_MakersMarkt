@@ -19,6 +19,9 @@ class ProductsController extends Controller
         return view('products.show', compact('product'));
     }
 
+    
+
+
     public function addToCart(Request $request)
     {
         $productId = $request->input('product_id');

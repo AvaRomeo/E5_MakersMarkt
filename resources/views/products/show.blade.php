@@ -49,6 +49,41 @@
                 <span class="text-2xl text-gray-900">€{{ number_format($product->price, 2, ',', '.') }}</span>
                 <a href="{{ route('products.index') }}" class="text-blue-500 hover:underline">Terug naar overzicht</a>
             </div>
+            <div class="mt-8">
+                <h3 class="text-xl font-semibold text-gray-900">Reviews</h3>
+                @if($product->reviews->isEmpty())
+                    <p class="text-gray-600 mt-2">Er zijn nog geen reviews voor dit product.</p>
+                @else
+                    <ul class="mt-2 text-gray-600">
+                        @foreach($product->reviews as $review)
+                            <li class="border-t border-gray-200 pt-4 mt-4">
+                                <div class="flex items-center">
+                                    <div class="text-sm">
+                                        @if($review->buyer)
+                                            <p class="font-medium text-gray-900">{{ $review->buyer->name }}</p>
+                                        @else
+                                            <p class="font-medium text-gray-900">Unknown Buyer</p>
+                                        @endif
+                                        <p class="text-gray-500">{{ $review->created_at->format('d-m-Y') }}</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 text-gray-700">
+                                    <p>{{ $review->content }}</p>
+                                </div>
+                                <div class="mt-2">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $review->rating)
+                                            <span class="text-yellow-500">&#9733;</span>
+                                        @else
+                                            <span class="text-gray-300">&#9733;</span>
+                                        @endif
+                                    @endfor
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </div>
         </div>
     </div>
 </div>

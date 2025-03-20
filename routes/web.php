@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CartController;
 use App\Models\Product;
+use App\Http\Controllers\CatalogueController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,11 +19,16 @@ Route::get('/register', function () {
     return view('login/register');
 });
 
+
+Route::get('/catalogue', [CatalogueController::class, 'index'])->middleware(['auth', 'verified'])->name('catalogue.index');
+Route::get('/catalogue/{id}/detail', [CatalogueController::class, 'show'])->middleware(['auth', 'verified'])->name('catalogue.detail');
+=
 Route::get('/dashboard', function () {
     $products = DB::table('products')->get();
 
     return view('dashboard_mod')->with('products', $products);
 });
+
 
 
 Route::get('/login', [UsersController::class, 'showLoginForm'])->name('login');
