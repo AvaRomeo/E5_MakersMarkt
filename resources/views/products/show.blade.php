@@ -26,10 +26,23 @@
             <ul class="mt-2 text-gray-600">
                 <li><strong>Unique Features:</strong> {{ $product->unique_features }}</li>
                 <li><strong>Durability:</strong>
-                    @for ($i = 1; $i <= 10; $i++) @if ($i <=$product->durability)
-                        <span class="text-green-500">&#9733;</span>
+                    @for ($i = 1; $i <= 10; $i++) 
+                        @if ($i <= $product->durability)
+                            <span class="
+                                @if ($product->durability == 10) text-red-700
+                                @elseif ($product->durability == 9) text-red-500
+                                @elseif ($product->durability == 8) text-orange-500
+                                @elseif ($product->durability == 7) text-yellow-500
+                                @elseif ($product->durability == 6) text-yellow-300
+                                @elseif ($product->durability == 5) text-green-500
+                                @elseif ($product->durability == 4) text-green-400
+                                @elseif ($product->durability == 3) text-green-300
+                                @elseif ($product->durability == 2) text-green-200
+                                @else text-green-100
+                                @endif
+                            ">&#9733;</span>
                         @else
-                        <span class="text-gray-300">&#9733;</span>
+                            <span class="text-gray-300">&#9733;</span>
                         @endif
                     @endfor
                 </li>
@@ -42,8 +55,7 @@
                                     @if ($product->complexity == 5) text-red-500
                                     @elseif ($product->complexity == 4) text-orange-500
                                     @elseif ($product->complexity == 3) text-yellow-500
-                                    @elseif ($product->complexity == 2) text-green-500
-                                    @else text-blue-500
+                                    @elseif ($product->complexity == 2) text-green-500                                
                                     @endif
                                 ">&#9733;</span>
                     @else
