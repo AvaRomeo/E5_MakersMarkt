@@ -19,11 +19,15 @@ Route::get('/register', function () {
     return view('login/register');
 });
 
-
 Route::get('/catalogue', [CatalogueController::class, 'index'])->middleware(['auth', 'verified'])->name('catalogue.index');
+Route::get('/catalogue/{id}/detail', [CatalogueController::class, 'show'])->middleware(['auth', 'verified'])->name('catalogue.detail');
 
 Route::get('/dashboard', function () {
+
+    $products = Product::paginate(10);
+
     $products = DB::table('products')->get();
+
 
     return view('dashboard_mod')->with('products', $products);
 });
@@ -65,6 +69,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update', [UsersController::class, 'update'])->name('profile.update');
     Route::delete('/profile/destroy', [UsersController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->name('products.destroy');
 
 
 // Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
