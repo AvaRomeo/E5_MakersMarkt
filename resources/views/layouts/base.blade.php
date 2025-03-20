@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>MakersMarkt</title>
 </head>
-<body class="bg-violet-100">
+<body class="bg-gray-100">
 
     <header class="bg-yellow-100 shadow">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -15,8 +15,8 @@
             <a href="/">MARKMAKER</a>
             </div>
             <ul class="flex space-x-4">
-            <li><a href="/" class="hover:text-indigo-600">Home</a></li>
-            <li><a href="/products" class="hover:text-indigo-600">Products</a></li>
+                <li><a href="/" class="hover:text-indigo-600">Home</a></li>
+                <li><a href="/products" class="hover:text-indigo-600">Products</a></li>
 
             @if(Auth::check())
                 <li><a href="/catalogue" class="hover:text-indigo-600">Catalogue</a></li>
@@ -30,12 +30,19 @@
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                 @csrf
                 <button type="submit" class="hover:text-indigo-600">Loogoot</button>
-                </form>                
+                </form>
             @else
                 <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
-                <li><a href="/login" class="hover:text-indigo-600">Loogin</a></li>
-            @endif
-
+                @if(Auth::check())
+                    <li><a href="/profile" class="hover:text-indigo-600">Profile</a></li>
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="hover:text-indigo-600">Loogout</button>
+                    </form>
+                @else
+                    <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
+                    <li><a href="/login" class="hover:text-indigo-600">Loogin</a></li>
+                @endif
             </ul>
         </nav>
     </header>
