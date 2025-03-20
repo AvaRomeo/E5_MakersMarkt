@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CartController;
 use App\Models\Product;
 
 Route::get('/', function () {
@@ -15,6 +16,12 @@ Route::get('/login', function () {
 
 Route::get('/register', function () {
     return view('login/register');
+});
+
+Route::get('/dashboard', function () {
+    $products = DB::table('products')->get();
+
+    return view('dashboard_mod')->with('products', $products);
 });
 
 
@@ -34,6 +41,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/products/{product}', [ProductsController::class, 'update'])->name('products.update');
     Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->name('products.destroy');
 });
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
 
 Route::get('/makers/{id}/portfolio', function ($id) {
     $user = \App\Models\User::find($id);

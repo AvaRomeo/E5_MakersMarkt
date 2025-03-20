@@ -117,4 +117,24 @@ class ProductsController extends Controller
         // Redirect naar de productoverzichtspagina met een succesmelding
         return redirect()->route('products.index')->with('success', 'Product succesvol verwijderd!');
     }
+
+    public function addToCart(Request $request)
+    {
+        $productId = $request->input('product_id');
+        $product = Product::find($productId);
+
+        if (!$product) {
+            return redirect()->route('products.index')->with('error', 'Product not found!');
+        }
+
+        // Add product to cart
+        $cart = session()->get('cart', []);
+        $cart[$productId] = [
+            'name' => $product->name,
+            'price' => $product->price,
+        ];
+        session()->put('cart', $cart);
+
+        return redirect()->route('products.index')->with('success', 'Product added to cart successfully!');
+    }
 }
