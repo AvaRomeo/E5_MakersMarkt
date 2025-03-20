@@ -13,6 +13,18 @@
             <p class="text-lg text-gray-600"><strong>Naam:</strong> <span class="text-gray-800">{{ Auth::user()->name }}</span></p>
             <p class="text-lg text-gray-600"><strong>Email:</strong> <span class="text-gray-800">{{ Auth::user()->email }}</span></p>
         </div>
+        <div class="mt-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Eigen Producten</h2>
+            <ul class="list-disc list-inside space-y-2">
+            @if($products->isEmpty())
+                <li class="text-gray-600">Geen producten</li>
+            @else
+                @foreach($products as $product)
+                <li class="text-gray-800">{{ $product->name }}</li>
+                @endforeach
+            @endif
+            </ul>
+        </div>
         <div class="mt-6 text-center">
             <!-- Bewerkknop -->
             <a href="{{ route('profile.edit') }}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow">
