@@ -1,6 +1,12 @@
 @extends('layouts.base')
 
 @section('content')
+@if(session('success'))
+<div class="bg-green-500 text-white p-3 rounded-lg mb-4">
+    {{ session('success') }}
+</div>
+@endif
+
 <div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl w-full bg-white shadow-lg rounded-lg overflow-hidden">
         @if($product->image_path)
