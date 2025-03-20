@@ -9,15 +9,15 @@ class CatalogueController extends Controller
 {
     public function index()
     {
-            $products = Product::select('id', 'image_path', 'name', 'description')->get();
+        $products = Product::all();
 
-            return view('catalogue.index', compact('products'));
+        return view('catalogue.index', compact('products'));
     }
 
     public function show($id)
     {
         $product = Product::find($id);
 
-        return view('catalogue.detail', compact('product'));
+        return view('catalogue.show', compact('product'));
     }
 }
