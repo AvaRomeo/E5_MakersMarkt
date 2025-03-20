@@ -30,7 +30,7 @@ class ProductsController extends Controller
         $request->validate([
             'name' => 'required|string|max:255', // Naam van het product is verplicht
             'description' => 'required|string', // Beschrijving is verplicht
-            'type' => 'required|in:Sieraden,Keramiek,Textiel,Kunst', // Type moet een van de 4 opties zijn
+            'type' => 'required|in:Jewelry,Ceramics,Textiles,Art', // Type must be one of the four options
             'material_usage' => 'required|string', // Materialen moeten beschreven worden
             'production_time' => 'required|integer', // Productietijd moet een getal zijn
             'complexity' => 'required|in:Laag,Middel,Hoog', // Complexiteit moet een van de drie waarden zijn
@@ -77,7 +77,7 @@ class ProductsController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'type' => 'required|in:Sieraden,Keramiek,Textiel,Kunst',
+            'type' => 'required|in:Jewelry,Ceramics,Textiles,Art', // Type must be one of the four options
             'material_usage' => 'required|string',
             'production_time' => 'required|integer',
             'complexity' => 'required|string|in:Laag,Middel,Hoog',
