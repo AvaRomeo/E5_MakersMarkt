@@ -15,6 +15,7 @@
                         {{ $product->name }}
                     </a>
                     <p class="text-gray-700 mt-2">{{ $product->description }}</p>
+                    <p class="text-gray-900 font-bold mt-2">€{{ number_format($product->price, 2) }}</p>
                     <a href="{{ route('cart.add', $product->id)}}" class="inline-block mt-4 px-4 py-2 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-500">
                         Add to Cart
                     </a>
