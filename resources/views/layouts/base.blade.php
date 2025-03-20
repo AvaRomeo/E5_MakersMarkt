@@ -7,12 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>MakersMarkt</title>
 </head>
-<body class="bg-gray-100">
+<body class="bg-violet-100">
 
-    <header class="bg-white shadow">
+    <header class="bg-yellow-100 shadow">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="font-bold text-xl">
-                MarkMaker
+                <a href="/">MARKMAKER</a>
             </div>
             <ul class="flex space-x-4">
                 <li><a href="/" class="hover:text-indigo-600">Home</a></li>
@@ -22,6 +22,7 @@
                 @else
                     <li><a href="/login" class="hover:text-indigo-600">Loogin</a></li>
                 @endif
+                <li><a href="/dashboard">dashboard moderator</a></li>
             </ul>
         </nav>
     </header>

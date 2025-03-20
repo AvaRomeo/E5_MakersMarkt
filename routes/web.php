@@ -15,6 +15,10 @@ Route::get('/register', function () {
     return view('login/register');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard_mod');
+});
+
 
 Route::get('/login', [UsersController::class, 'showLoginForm'])->name('login');
 
