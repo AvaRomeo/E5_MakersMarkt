@@ -18,7 +18,8 @@ Route::get('/register', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard_mod');
+    $products = Product::paginate(10);
+    return view('dashboard_mod')->with('products', $products);
 });
 
 
@@ -44,6 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update', [UsersController::class, 'update'])->name('profile.update');
     Route::delete('/profile/destroy', [UsersController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->name('products.destroy');
 
 
 // Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
