@@ -9,6 +9,28 @@
             <form action="{{ route('catalogue.index') }}" method="GET" class="flex flex-wrap sm:flex-nowrap sm:items-center sm:space-x-2 space-y-2 sm:space-y-0">
                 <input type="text" name="search" value="{{ $search ?? '' }}" class="border rounded px-3 py-2 w-full sm:w-auto"
                     placeholder="Search...">
+                <label for="price">Price:</label>
+                <select name="price_order" class="border rounded px-2 py-1 w-full sm:w-auto" onchange="resetFiltersExcept(this)">
+                    <option value="">None</option>
+                    <option value="asc" {{ $priceOrder === 'asc' ? 'selected' : '' }}>Low to High</option>
+                    <option value="desc" {{ $priceOrder === 'desc' ? 'selected' : '' }}>High to Low</option>
+                </select>
+                <label for="type">Type:</label>
+                <select name="type" class="border rounded px-2 py-1 w-full sm:w-auto" onchange="this.form.submit()">
+                    <option value="">All Types</option>
+                    @foreach ($products as $product)
+                    <option value="{{ $product->type }}" {{ $type == $product->type ? 'selected' : '' }}>
+                        {{ $product->type }}</option>
+                    @endforeach
+                </select>
+                <label for="material">Material:</label>
+                <select name="material" class="border rounded px-2 py-1 w-full sm:w-auto" onchange="this.form.submit()">
+                    <option value="">All Materials</option>
+                    @foreach ($products as $product)
+                    <option value="{{ $product->material }}" {{ $material == $product->material_usage ? 'selected' : '' }}>
+                        {{ $product->material_usage }}</option>
+                    @endforeach
+                </select>
             </form>
 
             <script>
