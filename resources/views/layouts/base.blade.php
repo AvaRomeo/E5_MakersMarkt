@@ -42,7 +42,7 @@
         </nav>
     </header>
 
-    <main>
+    <main class="mb-20">
         @yield('content')
     </main>
 

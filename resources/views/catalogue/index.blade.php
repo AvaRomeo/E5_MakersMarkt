@@ -49,22 +49,22 @@
             </script>
         </div>
     </div>
-    <div class="grid grid-cols-3 gap-4 mt-8">
-        <div class="container">
-            @foreach($products as $product)
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 m-8">
+        @foreach($products as $product)
+            <div class="bg-white shadow p-4 rounded-lg">
                 <a class="filterDiv {{ $product->type }}" href="{{ route('catalogue.show', $product->id) }}">
-                    <div class="bg-white shadow p-4 rounded">
-                        <img src="{{ $product->image_path }}" alt="{{ $product->name }}" class="w-full h-32 object-cover">
-                        <div class="font-bold text-lg">{{ $product->name }}</div>
-                        <div class="text-gray-700 pb-2">{{ $product->description }}</div>
+                    <img src="{{ $product->image_path }}" alt="{{ $product->name }}" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <div class="font-bold text-xl mb-2">{{ $product->name }}</div>
+                        <div class="text-gray-700 mb-4">{{ $product->description }}</div>
                         <a href="{{ route('cart.add', $product->id)}}" class="bg-green-500 text-white px-4 py-2 rounded">Add to Cart</a>
                     </div>
                 </a>
-            @endforeach
-        </div>
+            </div>
+        @endforeach
     </div>
-    <div class="flex justify-center mt-4">
-        <div class="bg-white text-black p-4 rounded">
+    <div class="flex justify-center mt-8">
+        <div class="bg-white text-black p-4 rounded-lg shadow">
             {{ $products->appends(request()->query())->links() }}
         </div>
     </div>
