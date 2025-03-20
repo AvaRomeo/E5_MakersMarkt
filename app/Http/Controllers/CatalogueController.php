@@ -7,11 +7,33 @@ use App\Models\Product;
 
 class CatalogueController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $search = $request->input('search');
+        $priceOrder = $request->input('price_order'); // 'asc' of 'desc'
+        $type = $request->input('type');
+        $material = $request->input('material_usage');
 
-        return view('catalogue.index', compact('products'));
+        $products = Product::when($search, function ($query, $search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%")
+                      ->orWhere('price', 'like', "%$search%")
+                      ->orWhere('type', 'like', "%$search%")
+                      ->orWhere('material_usage', 'like', "%$search%");
+            });
+        })
+        ->when($priceOrder, function ($query, $priceOrder) {
+            $query->orderBy('price', $priceOrder);
+        })
+        ->when($type, function ($query, $type) {
+            $query->where('type', $type);
+        })
+        ->when($material, function ($query, $material) {
+            $query->where('material_usage', $material);
+        })
+        ->paginate(15);
+
+        return view('catalogue.index', compact('products', 'search', 'priceOrder', 'type', 'material'));
     }
 
     public function show($id)
