@@ -17,8 +17,9 @@
             <ul class="flex space-x-4">
                 <li><a href="/" class="hover:text-indigo-600">Home</a></li>
                 <li><a href="/products" class="hover:text-indigo-600">Products</a></li>
-                <li><a href="/catalogue" class="hover:text-indigo-600">Catalogue</a></li>
-                <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
+                @if(Auth::check())
+                    <li><a href="/catalogue" class="hover:text-indigo-600">Catalogue</a></li>
+                @endif
                 @if(Auth::check())
                     <li><a href="/profile" class="hover:text-indigo-600">Profile</a></li>
                     <form action="{{ route('logout') }}" method="POST" class="inline">
@@ -29,7 +30,9 @@
                     <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
                     <li><a href="/login" class="hover:text-indigo-600">Loogin</a></li>
                 @endif
-                <li><a href="/dashboard">dashboard moderator</a></li>
+                @if(Auth::check() && Auth::user()->is_moderator)
+                    <li><a href="/dashboard" class="hover:text-indigo-600">Dashboard Moderator</a></li>
+                @endif
             </ul>
         </nav>
     </header>
