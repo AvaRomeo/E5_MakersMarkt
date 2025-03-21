@@ -20,7 +20,11 @@
                 <li class="text-gray-600">No products</li>
             @else
                 @foreach($products as $product)
-                <li class="text-gray-800">{{ $product->name }}</li>
+                    <li class="text-gray-800">
+                        <a href="{{ route('products.show', $product->id) }}" class="text-blue-500 hover:underline">
+                            {{ $product->name }}
+                        </a>
+                    </li>
                 @endforeach
             @endif
             </ul>
