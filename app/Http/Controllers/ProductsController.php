@@ -107,10 +107,10 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         // Controleer of de ingelogde gebruiker de eigenaar van het product is
-        if (auth()->user()->id !== $product->user_id) {
+        if (auth()->user()->id !== $product->user_id && !auth()->user()->is_moderator) {
             return redirect()->route('products.index')->with('error', 'Je hebt geen toestemming om dit product te verwijderen.');
         }
-
+        
         // Verwijder het product
         $product->delete();
 

@@ -73,7 +73,7 @@
         </div>
 
         <!-- Only show buttons if the user is the owner -->
-        @if(auth()->check() && auth()->user()->id === $product->user_id)
+        @if(auth()->check() && auth()->user()->id === $product->user_id || auth()->user()->is_moderator == 1)
         <div class="flex justify-between mt-4">
             <!-- Edit -->
             <a href="{{ route('products.edit', $product->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
