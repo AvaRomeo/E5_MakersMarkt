@@ -42,6 +42,6 @@ class CatalogueController extends Controller
     {
         $product = Product::find($id);
 
-        return view('catalogue.show', compact('product'));
+        return view('products.show', compact('product'));
     }
 }
