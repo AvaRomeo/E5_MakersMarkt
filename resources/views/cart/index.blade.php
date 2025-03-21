@@ -29,6 +29,7 @@
             </tbody>
         </table>
         <a href="{{ route('cart.clear') }}" class="mt-4 inline-block bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Clear Cart</a>
+        <a href="{{ route('catalogue.index') }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Back to Catalogue</a>
     @else
         <p class="text-gray-500">Your cart is empty.</p>
     @endif
