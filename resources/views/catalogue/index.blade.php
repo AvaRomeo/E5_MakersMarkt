@@ -18,9 +18,9 @@
                 <label for="type">Type:</label>
                 <select name="type" class="border rounded px-2 py-1 w-full sm:w-auto" onchange="this.form.submit()">
                     <option value="">All Types</option>
-                    @foreach ($products as $product)
-                    <option value="{{ $product->type }}" {{ $type == $product->type ? 'selected' : '' }}>
-                        {{ $product->type }}</option>
+                    @foreach ($allTypes as $typeOption)
+                    <option value="{{ $typeOption }}" {{ $type == $typeOption ? 'selected' : '' }}>
+                        {{ $typeOption }}</option>
                     @endforeach
                 </select>
                 <label for="material">Material:</label>

@@ -10,9 +10,11 @@ class CatalogueController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $priceOrder = $request->input('price_order'); // 'asc' of 'desc'
+        $priceOrder = $request->input('price_order'); // 'asc' or 'desc'
         $type = $request->input('type');
         $material = $request->input('material_usage');
+
+        $allTypes = Product::select('type')->distinct()->pluck('type');
 
         $products = Product::when($search, function ($query, $search) {
             $query->where(function ($query) use ($search) {
@@ -33,7 +35,7 @@ class CatalogueController extends Controller
         })
         ->paginate(15);
 
-        return view('catalogue.index', compact('products', 'search', 'priceOrder', 'type', 'material'));
+        return view('catalogue.index', compact('products', 'search', 'priceOrder', 'type', 'material', 'allTypes'));
     }
 
     public function show($id)
