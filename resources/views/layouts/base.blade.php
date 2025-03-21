@@ -24,10 +24,12 @@
                     @if(Auth::check() && Auth::user()->is_moderator)
                         <li><a href="/dashboard" class="hover:text-indigo-600">Dashboard</a></li>
                     @endif
+                    <li><p>Balance: €{{ number_format(Auth::user()->balance, 2, ',', '.') }}</p></li>
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf
                         <button type="submit" class="hover:text-indigo-600">Loogout</button>
                     </form>
+                    
                 @else
                     <li><a href="/register" class="hover:text-indigo-600">Register</a></li>
                     <li><a href="/login" class="hover:text-indigo-600">Loogin</a></li>
