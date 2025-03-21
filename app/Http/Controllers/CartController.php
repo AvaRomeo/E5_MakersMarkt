@@ -12,7 +12,10 @@ class CartController extends Controller
     public function index()
     {
         $cart = Session::get('cart', []);
-        return view('cart.index', compact('cart'));
+        $total = array_reduce($cart, function ($carry, $item) {
+            return $carry + ($item['price'] * $item['quantity']);
+        }, 0);
+        return view('cart.index', compact('cart', 'total'));
     }
 
     // Add to cart
